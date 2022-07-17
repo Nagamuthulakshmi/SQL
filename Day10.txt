@@ -1,4 +1,4 @@
-Joins
+Joins in mySQL
 Strictly 2 tables only needed to perform join operation with one or more common columns are  needed.
 It brings out combintions as a result.
 
