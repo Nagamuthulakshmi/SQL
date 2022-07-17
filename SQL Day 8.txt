@@ -1,0 +1,172 @@
+Group By
+SubQuery
+Views
+Joins
+---------------------------------------------------------
+Group by collects common data column wise.
+
+select col1 from tablename where condition group by col1 
+having condition order by colname asc/desc;
+
+1. Whatever column name we write in group by should be written in select.
+select id from task_table group by id;
+select task from task_table group by task;
+select status from task_table group by status;
+
+2. count(id)/max(id)/min(id)/avg(id)/sum(id).
+select id,max(id) from task_table group by id;
+select task,count(task) from task_table group by task;
+select status from task_table group by status;
+
+3. order of writing group by query.
+  ->Select
+  ->From
+  ->Where condition
+  ->group by
+  -> having condition
+  -> order by
+
+select task,count(id) from task_table where status = 'done' 
+group by task having count(id)>=2;
+-> Sweeping  2
+->Cooking  1
+->Painting 0  
+->Cleaning  2
+
+-->Sweeping  2
+-->Cleaning  2
+
+4. where----> you can write column conditions like --> id>2 / status != 'done'/
+task = 'sweeping'.
+having -----> you can write aggregate function condition --> count(id) = 2 / 
+max(id) = 5.
+
+5. Dont use * in select command while using group by.
+
+SELECT * FROM TASK_TABLE GROUP BY ID;
+
+ID 	TASK	STATUS
+1	CLEANINGdone	?
+2	?	?
+3	?
+5
+7
+8
+
+Find the number of each tasks allocated.
+
+SELECT TASK,COUNT(TASK) FROM TASK_TABLE GROUP BY TASK;
+
+TASK	COUNT(TASK)
+Sweeping 	2  
+Cooking 	2
+Painting 	2
+Cleaning 	3
+
+Find the tasks allocated for each id. 
+
+SELECT ID,COUNT(TASK) FROM TASK_TABLE GROUP BY ID;
+
+ID COUNT(TASK)
+1   3
+2   1
+3   2
+5   1
+7   1
+8   1
+
+Find the number of tasks done and not done.
+
+SELECT STATUS,COUNT(TASK) FROM TASK_TABLE GROUP BY STATUS;
+
+STATUS	COUNT(TASK)
+done  	5
+not done 	4
+
+Number of  tasks done.
+
+SELECT TASK,COUNT(TASK) FROM TASK_TABLE 
+WHERE STATUS='DONE' GROUP BY TASK;
+
+TASK	COUNT(TASK)
+Sweeping	2
+Cleaning	2
+Cooking	1
+
+Not done tasks.
+
+SELECT TASK,COUNT(TASK) FROM TASK_TABLE WHERE STATUS=
+'NOT DONE' GROUP BY TASK;
+
+TASK	COUNT(TASK)
+Cleaning	1
+Cooking	1
+Painting	2
+
+Display the done tasks which is more than 1.
+
+SELECT TASK,COUNT(TASK) FROM TASK_TABLE 
+WHERE STATUS='DONE' GROUP BY TASK HAVING COUNT(TASK)>1;
+
+Sweeping	2
+Cleaning	2
+
+Display the not done tasks which is equal to 1.
+
+SELECT TASK,COUNT(TASK) FROM TASK_TABLE 
+WHERE STATUS='NOT DONE' GROUP BY TASK HAVING COUNT(TASK)=1; 
+
+Cleaning	1
+Cooking	1
+
+Find the person who has allocated max tasks.
+
+SELECT ID,COUNT(TASK) FROM TASK_TABLE GROUP BY ID;
+
+1	3
+2	2
+3	1
+5	1
+7	2
+
+VIRTUAL TABLE (VIEW)
+
+SELECT MAX(ID) FROM VIRTUALTABLE WHERE NUM IN (SELECT NUM FROM VIRTUAL TABLE) 
+
+1   3
+
+//SUBQUERY,VIEW,GROUP BY
+
+
+Find the person who has allocated minimum tasks.
+SELECT ID,COUNT(TASK) FROM TASK_TABLE GROUP BY ID
+2   1
+5   1
+7   1
+8   1
+
+Find the number persons who has not done the task.
+
+SELECT ID,COUNT(ID) FROM TASK_TABLE 
+WHERE STATUS='NOT DONE' GROUP BY ID;
+
+ID COUNT(ID)
+1  2
+2  1
+3  1
+
+Find the number persons who has done the task.
+
+SELECT ID,COUNT(ID) FROM TASK_TABLE 
+WHERE STATUS='DONE' GROUP BY ID;
+1    1
+3   1
+5   1
+7   1
+8   1
+
+
+
+
+
+

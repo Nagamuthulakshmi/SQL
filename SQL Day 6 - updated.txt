@@ -1,0 +1,172 @@
+30-06-22
+
+DQL - Data Query Language - 
+It is used to question  the table and retrieve data from the table.
+It wil not affect the rows or columns in the table.
+
+Select, Show, Help
+
+1. SHOW
+show tables;
+show databases;
+
+2. HELP: syntax, description of the commands that we use
+help contents; 
+help 'data manipulation';
+help 'insert';
+
+3. SELECT:
+
+1. All Rows All Columns    ->    *
+2. All Rows some Columns -> select <col1>,<col2>, No Where condition
+3. Some Rows All Columns -> select * ,where condition
+4. Some Rows Some Columns ->select col1,col2,.. from tn where condition;
+5. AND,OR,NOT  -- after where
+6. BETWEEN | AND  -- range of values
+7. IN - list of values
+8. LIKE - 
+9. DISTINCT - unique contents of any column
+10. ALIAS - giving another name for a column
+11. ORDER BY
+12. IS NULL | IS NOT NULL
+13. LIMIT
+
+list the details of-----
+display the details of-------
+....SELECT
+
+
+
+1. SELECT ALL ROWS ALL COLUMNS:
+the total table:
+select * from <tablename>;
+select * from employees;
+
+*-> All Columns not all rows!
+
+2. SELECT ALL ROWS SOME COLUMNS:
+
+select col1,col2 from <tn>;
+select id,name from employees;
+
+3. SELECT SOME ROWS ALL COLUMNS:
+
+select * from employees where name='jeevitha';
+select * from employees where id>=3;
+select * from employees where base<=3000;
+select * from employees where city<>'Madurai';
+
+where----> Clause which is used to give condition.
+
+4. SELECT SOME ROWS SOME COLUMNS:
+
+select id,name,title,city from employees where city = 'chennai';
+
+5. AND ---> both conditions to be satisfied!
+
+select * from employees where base>2000 and city = 'Trichy';
+
+Display details of employees who is earning more than 1000 also working as admin 
+
+OR ----> Any condition can be satisfied!
+
+select * from employees where base>2000 or city = 'Trichy';
+
+Display the employees who are earning less than 2000 
+also living in either madurai or chennai.
+
+select * from employees where base <2000 and 
+(city =  'Madurai' or city = 'Chennai' )
+
+NOT ----> Opposite Condition
+
+select * from employees where not id=5;
+select * from employees where id<>5 or id<>6 or id<>7;
+
+6. BETWEEN | AND:  --> range  --> Numbers
+
+select * from employees where id between 5 and 7;
+5,6,7--> details.
+
+7. IN---> List of items
+
+select * from employees where name in ('jeevitha','mani','dinesh');
+
+8. DISTINCT -----> UNIQUE
+
+select distinct(city) from employees;
+
+9. ALIAS --> Nick name
+ 
+select (base+hr) from employees;
+
+10. LIKE --> operator for varchar
+
+_ ---> you are denoting one character
+%    ---> denoting many characters
+
+1. Number of characters:
+select * from employees where name like '_____';
+(displays al the details whose name is of 5 characters.
+
+2. Contains an alphabet:
+select * from employees where name like '%a%';
+--> Names that starts with a, names that contains a, names that ends with a.
+
+3. Starts with an alphabet:
+select * from employees where name like 'a%';
+
+3. Ends with an alphabet:
+select * from employees where name like '%a';
+
+4. Second Alphabet:
+select * from employees where name like 'ya%';
+yamini,yashi,yashodha
+
+4. Second Alphabet:
+select * from employees where name like '%ya';
+Surya, Arya, 
+
+4. Second Alphabet:
+select * from employees where name like '_a%';
+mani, yamini, Naga, Danny 
+
+5. Names with 3 alphabets:
+select * from employees where name like '_a_';
+cat,mat,bat,maa, mam
+
+6. Names with 6 alphabets whose name contains a anywhere:
+select * from employees where name like '%a%';
+
+
+ORDER BY - Arranging values in asc or desc
+order by accepts one column at a time
+
+select * from employees order by name;
+select * from employees order by name desc;
+
+SELECT
+FROM
+WHERE
+ORDER BY
+
+IS NULL/IS NOT NULL
+displays the column which has a null value
+select * from employees where age is null;
+displays the column which has a non null value
+select * from employees where age is not null;
+
+LIMIT
+displays the rows from the table
+select * from employees limit 5;
+
+Display last row of the table
+select * from employees order by id desc limit 1;
+
+
+
+
+
+
+
+

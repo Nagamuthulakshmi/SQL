@@ -1,0 +1,120 @@
+SUBQUERY -> answer that cant be obtained with one query can be achieved with subquery.
+you can use subquery for one table.
+
+Employee-> names, age, details...
+max age irkaravangaloda details venum:
+//select max(age),* from tn;
+//select * from tn where age=max(age);
+
+---->     select* from tn where age =(select max(age) from tn ) ORDER BY NAME;
+----> select * from tn where salary in (select salary from tn2 where salary>1500) order by name;
+
+
+DONT USE ORDER BY INSIDE SUBQUERY!
+
+Query inside a Query.
+
+select * from task_table where id = 
+|
+main Query
+
+(select id from employee_table where phno = '1983109121');
+|
+subquery
+
+select colmn from table where anycol operator (subquery)
+
+1. A main query can have many subqueries.
+2. subquery can return only one column.
+3. Subquery should be written inside brackets only.
+4. Subquery is always placed in right of main query.
+5. Write the third subquery inside 2nd subquery.
+main query where col >(subquery1 where col = (Subquery2 (())))
+
+Types of Subquery:
+Single row SubQuery (<,>,<=,>=,<>,=)
+Multiple row subquery(IN, NOT IN, >ANY,=ANY,<ANY, >ALL,<ALL,=ALL)
+
+MAINQUERY WHERE OPERATOR(SUBQUERY);
+			|	       |
+	=,<,>,<=,>=,<>,IN,ANY,ALL	SingleRow/Multiple row
+
+task_table,Employee_table
+
+select * from task_table where ID = 
+MQ			OPERATOR
+(select ___ID___ from employee_table where name='A')
+SQ
+
+NAME A LA ---> 1 ROW   ---> SRSQ
+
+select status in task_t where id in (select id from employee_t where name in (SQ)) and task in (SQ);
+
+select * from task_table where ID in
+MQ			OPERATOR
+(select ___ID___ from employee_table)
+1,2,3,4,5
+SQ
+
+id	task	status
+1	s	d
+1
+2
+3
+3
+5
+
+5 ROWS IN SQ---->MRSQ----->IN/NOT IN /ANY/ALL
+
+1. Subquery returns 1 row 1 column - Single Row SubQuery
+SELECT * FROM EMPLOYEE_TABLE WHERE ID = (SELECT ID FROM TASK TABLE WHERE ID =2);
+2	B	23242498	2020-02-04
+2. Subquery returns many rows 1 column - Multiple row subquery
+SELECT * FROM EMPLOYEE_TABLE WHERE ID IN (SELECT ID FROM TASK TABLE);
+3. Subquery la select panirka column, main query la where condition la irkanum.
+4. Dont use * in subquery  because subquery will not return many columns.
+
+SELECT * FROM EMPLOYEE_TABLE WHERE DOB  = ('1997-08-02');
+						|
+					(SELECT MIN(DOB) FROM EMPLOYEE_TABLE);
+//PERSON DETAIL
+
+SELECT * FROM EMPLOYEE_TABLE ORDER BY DOB DESC;
+DESC - 7 TO 1
+DESC - 2022 TO 1996
+              YOUNGER TO ELDER --> dob
+
+select * from tn1 where col1 in (select col1 from tn2 where col2 >(select col2 from tn3 where col3=value))
+
+select * from employee where id in(3,5,4,6); 
+->if there are data for ids 3,5,4,6
+select * from employee where id =Any(3,5,4,6); 
+select * from
+
+cust-id: 100,101, 102,103,104,105,106,107,109
+order-custid: 101,102,103,104,106
+
+select id from customer where id >any(select id from orders);
+select id from customer where id >any(101,102,103,104,106,);
+select id from customer where id <any(101,102,103,104,106);
+
+< ANY means less than the maximum.
+> ANY means more than the minimum
+
+select id from customer where id >any(101,102,103,104,106);
+102,103,104,105,106,107,109
+select id from customer where id <any(101,102,103,104,106);
+100,101,102,103,104,105
+
+< ALL means less than the minimum.
+> ALL means more than maximum.
+select id from customer where id >all(101,102,103,104,106);
+107,109
+select id from customer where id <all(101,102,103,104,106);
+100
+
+
+select * from employee where id =All(3,5,4,6); 
+
+
+

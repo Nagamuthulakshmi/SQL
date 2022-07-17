@@ -1,0 +1,30 @@
+Joins
+Strictly 2 tables only needed to perform join operation with one or more common columns are  needed.
+It brings out combintions as a result.
+
+Types:
+1. Inner Join- Equi Join
+2. Outer Join - Left Outer Join, Right Outer Join
+3. Self Join - it compares itself
+4. Cross Join - Cartesian join
+5. non- Equi Join 
+
+Inner Join - Displays common combination of 2 tables.
+
+select c.cust_id, o.cust_id from customer c, orders o where c.cust_id=o.cust_id;
+
+Left outer - Common Combiation+ excess values of left table
+
+select c.cust_id, o.cust_id from customer c left outer join orders o on c.cust_id=o.cust_id;
+
+Right outer - Common combination + excess values of right table
+self - joins itself (m*m) - m :number of rows in a table
+select c.cust_id, o.cust_id from customer c, customer o where c.cust_id=o.cust_id;
+
+cross- joins all the combinations of 2 tables (m*n) m:no of rows in table1
+		n: number of rows in table2
+
+select c.cust_id, o.cust_id from customer c cross join orders o;
+
+nonequi - displays only uncommon combination of both tables
+select c.cust_id, o.cust_id from customer c, orders o where c.cust_id<>o.cust_id;

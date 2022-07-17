@@ -1,0 +1,10 @@
+Project ER Diagram
+
+Self learning
+1. Normalisation
+2. DBMS
+3. DCL,TCL
+4. Triggers
+5. Cursors
+
+Project ER Diagram for your own business

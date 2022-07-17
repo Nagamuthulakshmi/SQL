@@ -1,0 +1,153 @@
+DQL Built In Functions:
+
+1. Math Functions
+2. String Functions
+3. Date Functions
+4. Aggregate Functions
+5. Comparision Functions
+
+select ------------ from tn;
+select ---------;
+
+STRING FUNCTIONS: - varchar cols
+Concat() -- Joining columns with other columns or with some words/symbols
+lower() -- small letters
+upper() -- capital letters
+replace(col name,what has to be replaced, how it has to be replaced) --  changes the data
+substr(colname, nth alphaabet, length) - shows the part of a word
+length()
+
+1. select concat(name,"*",age," ",id) from employees;
+
+
+Eg:
+surya*24 1
+dinesh*30 5
+mani*26 8
+
+2. select concat("Good ",name) from employees;
+
+Good surya
+good mani
+good dinesh
+
+select lower(name) from employees;
+surya
+select upper(name) from employees;
+DINESH
+select replace(name, "a", "z") from employees;
+mzni
+select substr(name, 2, 3) from employees;
+surya     ury
+mani     ani
+dinesh   ine
+
+select length(name) from employees;
+
+5
+4
+6
+
+DATE FUNCTIONS:
+
+curdate() - current date in yyyy-mm-dd
+now() - current date and time in yyyy-mm-dd hh:mm:ss
+datediff()- 2 days difference in no of days format
+[display the difference in month format or year format]
+sysdate() - your computer date in yyyy-mm-dd hh:mm:ss 
+last_day(date) - last day of that particular month
+date_format() - changes yyyy-mm-dd ----> mm/dd/yy or  dd:mm:yy
+month(date) - displays the month from date
+year(date) - displays the year from the date
+
+--> formats shared.
+
+1. select curdate();
+2. select now();
+3. select sysdate();
+4. select last_day('1996-02-07')   /    select last_day(colname) from tn;
+5. select date_format('1997-09-17','%M-%d-%Y);    /
+    select date_format(colname, '%y') from tn;
+6. select month(curdate());
+7. select year(now()); 
+
+
+MATH FUNCTIONS:
+
+abs() - negative->positive
+ceil() - 
+floor()
+round()
+mod(n,m) - reminder values
+truncate() - decimal values cut
+exp() - exponential value of a num
+pow(n,m) - power value of a number
+sqrt() - square root
+
+
+
+select abs(-13.7);  ---> 13.7
+select mod(97,4); --->1   (Reminder)
+select truncate(13.847626,2); ---->13.84
+select truncate(13.847626,0); ---->13
+select exp(2); ---> 1.2423                 -----> Its an inverse of log value (1/log2 = exp)
+select pow(3,2); -->9
+select sqrt(4); -->2
+
+	ceil	floor	round
+17.2	18	17	17
+17.5	18	17	18
+-17.2	-17	-18	-17
+-17.5	-17	-18	-18	
+
+select ceil(19.6); --->20
+select ceil(19.1); ---->20
+select ceil(-19.6);-->-19
+select ceil(-19.1); --->-19
+select floor(19.6); --->19
+select floor(19.1); --->19
+select floor(-19.6); -->-20
+select floor(-19.1); -->-20
+select round(19.6); -->20
+select round(19.1); -->19
+select round(-19.6); -->-20
+select round(-19.1); -19
+
+Aggregate Functions: ---> int,float - numbers
+
+Count - number of rows
+Max - maximum in a column
+Min - minimum in  a column
+Avg - average of a column
+Sum - total of a column
+
+NAME
+surya
+mani
+dinesh
+
+select count(name)from tn where id =1 --> 1
+select length(name) from tn where id =1--> 5
+
+select count(*) from salary; //total no of rows in table including,empty and null rows
+select count(id) from salary where salary>20000;
+
+select max(age) from employee;
+
+select min(dob) from employee; ---> gives eldest person dob
+select max(dob) from employee; --->gives youngest person dob
+
+select avg(salary),sum(salary) from employee; 
+
+
+
+
+
+
+
+
+
+
+
+
+

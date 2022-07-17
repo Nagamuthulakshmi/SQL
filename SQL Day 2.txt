@@ -1,0 +1,80 @@
+SQL
+1. Introduction of SQL - DDL
+2. DML
+3. DQL
+4. Builtin Functions of SQL
+5. Subquery
+6. Joins
+7. Keys
+
+
+DDL - CREATE, ALTER, DROP, TRUNCATE
+
+Daily Class:
+1. Open XAMPP Server
+2. mySQL ---------- Start (Click)
+3. Open Shell - Command Prompt which has SQL Queries.
+4. connect to mysql database:
+        mysql    -h     localhost    -u    root   --------> -h(hostname), -u(username)
+5. Create Database:
+	create    database    itvedant;
+6. To show the entire list of databases:
+	show    databases;
+7. Choose which database to use for creating a table:
+	use itvedant;   ---------> (Opening that database to create tables inside)
+8. Create another Database:
+	create    database    dummy;
+9. Permanently remove the database:
+	drop    database    dummy;
+10. Create a table:
+			student
+	Sno    |    Name   |   Phno   |  email    |  DOB   |  Gender
+	(int)     (varchar)  (varchar) (varchar) (date)    (varchar)
+Syntax: 
+
+ create  table <tablename>  (col1 datatype, col2 datatype, ......);
+
+	create table student (sno int, name varchar(30), phno varchar(20), 
+	email varchar(30), dob date, gender varchar(10));
+
+-> int accepts 8 characters only, varchar needs size in () near col name, 
+date should be inserted in this format of YYYY-MM-DD.  
+
+11. Describe the table to check if all columns are correctly written:
+Syntax:
+	desc <tablename>;   ---->desc student;
+
+fields-> Columns, datatype,null(Yes/NO),key(condition),default(NULL),Extra(ex:auto_increment)
+null - ball  ---> (removed Air) ----> literally means nothing. 
+
+12. Flush out data from the table:
+Syntax:  
+	truncate table <tablename>; ------> truncate table student;
+
+13. Permanently remove a table from database:
+Syntax:
+	drop table <tablename>;  ---------> drop table student;
+
+
+Monday:
+Create - Keys/Constraints
+Alter Command
+DML - Insert,Update,Delete.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

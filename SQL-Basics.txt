@@ -1,0 +1,114 @@
+
+Front End--------------------------------Back End----------------------Database
+Html,css,js,jq,Angular.js,
+React.js,React Native,node.js------------java,python,c,c++-------------sql - Mysql
+								       sql - oracle
+								       AWS,Azure,Google Firebase
+
+FrontEnd - Web Designers
+BackEnd - Developers
+Database - Db Admin
+
+FULL STACK DEVELOPERS - front end + back end + db
+
+Depending upon the application - 
+Angular+Java+Mysql - 1 Web Application
+ReactNative+Python+Google Firebase - 1 Mobile Application
+
+
+Customer ---- Application ------ Order ----- hotel ----- food prepare ---- support member -> food -----customer & deliver food
+
+
+
+sql | MySQL
+
+
+sql - Language
+MySQL,Oracle,MongoDB - Databases.
+
+
+House ---> 6 Members. ( MySQL | Oracle | MongoDB ) - Storage place to store all the data
+Address --> to reach the house to see the members. (SQL) - Tool to meet that data - Language to perform crud operation to data.
+CRUD- Create, Retrieve, Update,Delete data.
+
+Why SQL: To perform CRUD operation to data in the Database.
+What is CRUD, What is DATABASE
+
+SQL - Structured Query Language
+1. Store data to database
+2. Retrieve Data to Database
+3. Update Data
+4. Delete Data
+
+
+Instruction|Program ------> Query in terms of SQL
+
+Cupboard - Database
+Shelves  - Table
+clothes  - Data
+
+
+Database is collection of n number of tables.
+Table has n number of Rows and Columns.
+
+Table- Relation
+Rows- Tuple|Records
+Columns- Attributes| Fields
+Data - Value in a cell.
+
+DBMS: Data Base Management System.
+The Process/Concept of maintaining data in a table of a database is called DBMS. 
+EX: CRUD data.
+
+DBMS- 8 Types.
+
+MYSQL is a RDBMS
+RDBMS- Relational Database Management System.
+RDBMS: Relationship between tables and databases. 
+----------------------------------------------------------------
+
+SQL - 5 Subsets - DDL + DML + DQL + DCL + TCL = SQL
+DDL - Data Definition Language
+
+DDL Commands - CREATE, ALTER, DROP, TRUNCATE
+Why? Structure - What are the column name, Datatypes, Conditions of column and its modifications like 
+Renaming the table, renaming columns, 
+Deleting a column, inserting a column, adding conditions to the column.
+
+DML- Data Modification Language
+DML Commands - INSERT, UPDATE, DELETE
+DML will modify the table rows. Ex: Add data to the cells, change row data, delete row data. 
+
+DQL - Data Query Language
+DQL Commands - SELECT, SHOW, HELP
+DQL will fetch the data according to the questions/Queries asked to the table.
+Ex. 1 Lakh column,1 lakhs rows -  very tedious to understand the table.
+DQL will help us in fetching/ Retrieve the contents upon the query asked.
+
+DCL - Data Control Language
+DCL Commands- GRANT, REVOKE
+Ex: Data Administrator - allow and not allow the persons who can view the data.
+In a company, you are joining as a new employee- credentials given - Allowed granted permission to view their contents.
+In a company, you are releiving from there - credentials are removed - you are denied or revoked permissions to view their contents.
+
+
+TCL - Transaction Control Language
+TCL Commands - COMMIT, ROLLBACK, SAVEPOINT
+Ex: ATM - Taking money
+1. yur account has balance & atm has money - you will be able to take money. 1 Transaction. COMMIT.
+
+Word File - We write some contents.
+CTRL+S - SAVEPOINT - for safety purpose - what if something goes wrong? i wanted to save my data properly.
+CTRL+Z - ROLLBACK -undo the wrong workings.
+---------------------------------------------------------------
+
+
+
+
+
+
+
+
+ 
+
+

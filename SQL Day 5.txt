@@ -1,0 +1,86 @@
+29-06-22
+
+Foreign Key
+DML Delete.
+
+DML- Delete:
+1. Delete all the rows
+2. Delete some rows in a table
+3. Delete 1 row in a table.
+
+Google Search: Can Delete in sql remove values/cell in one column?  ---> NO
+
+1. Delete can remove the entire row only, not a particular cell value.
+if you want to remove a particula cell value, use UPDATE command and 
+change the value to NULL/EMPTY.
+
+
+			students
+Sno    |    Name   |   Phno   |  email    |  DOB   |  Gender    |  Pass
+(int)     (varchar)  (varchar) (varchar) (date)    (Enum)         (Set)
+(PK)	(U)        (NN)	(U)       (U)      (M,F,T)        (E,T,M,Sc,So)
+1	a	1234    A1@g.co  1996-01-01     F		E
+2	b	1234    b2@g.co  1665-01-02    M		E,T,M
+3 	c	2341     null         1886-03-02   F		Sc,So
+4 	d	2341    d4@g.co   null	             T      	M
+
+To insert a set datatyped column:
+
+alter table students add column Pass set('E','T','M','Sc',So');
+insert into students(Pass) values('E,T');   --->Value will be added.
+
+
+Start Xampp Server, 
+To use Command prompt instead of Shell:
+
+open CMD, type 
+set path = %PATH%;C:\Xampp\mysql\bin;
+
+next,
+mysql -h localhost -u root
+
+create table tony2(pass set ('E','T','M'));
+insert into students(Pass) values('E,T'); ---> Will be inserted
+insert into students(Pass) values('E,Z'); 
+----> query will run but will not be inserted---> E alone will be inserted.
+
+insert into students(Pass) values('E,Sc');
+insert into students(Pass) values('So,T');
+--------------------------------------------------------------
+DELETE COMMAND:
+--> To delete all rows: 
+delete from tony2;      	          |     truncate table tony2;
+(data can be recovered thru log files)  | (data lost)
+
+--->To delete one row:
+delete from tony2 where Pass='So,T';
+
+---> To delete many rows:
+delete from tony2 where Pass='So,T' or Pass='E,Sc';
+
+---------------------------------------------------------------------
+FOREIGN KEY:
+
+create table customers(cid int primary key, cname varchar(20),
+cphno varchar(15));
+
+create table orders(oid int, pname varchar(20), price int,c_id int, 
+foreign key(c_id) references customers(cid));
+
+Insert some values in customer table. cid- 1,2,3,4.
+Insert some values in orders table (but you will be able to give only 1,2,3,4 
+into the column containing foreign key)
+
+Points to note:
+1. Foreign key can have null values
+2. Can have duplicates
+3. foreign key is another table's primary key.
+4. a table's foreign key can be another foreign key.
+
+
+Doubt:  table cant be loaded in the engine after server issue.
+
+
+
+
+

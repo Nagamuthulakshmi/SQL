@@ -1,0 +1,172 @@
+PRevious Class..
+1. connect to db
+2. create db
+3. use db
+4. drop db
+5. create table
+6. describe table
+7. show table
+8. show databases
+9. truncate table
+
+Monday:
+Create - Keys/Constraints
+Alter Command
+
+
+1. mysql -h localhost -u root     ----->(no semi colon)
+2. show databases;
+3. use itvedant;    ----->Db changed
+4. show tables;
+5. desc student; -----> to see table structure
+
+KEYS/CONSTRAINTS/CONDITIONS:
+1. Primary Key - PRI
+2. Foreign Key - MUL
+3. Not Null Constraint
+4. Unique Key - UNI
+5. Enum Datatype
+6. Set Datatype
+
+1. Primary Key - No Duplicates+Not Null - Uniquely Identifies each row. 
+One table has one key.
+		Eg: Aadhar number
+
+2. Not Null - duplicate allowed+not empty 
+(null=nothing) - Eg: Ball - without air inside | 
+Phno in Aadhar - Both child and father aadhar has same phno but not empty.
+
+3. Unique - No Duplicate + Null Allowed
+Eg: Voter id/Driving License - Not Mandatory but it will be unique
+whomever has it.
+
+4. Enum - (datatype+constraint) - any one value out of choices available. 
+Null Allowed,Duplicates allowed
+Eg: Gender - M/F/T   or Train Seats - L/M/U
+
+5. Set - (datatype+constraint) - one or more than one value out of choices available.
+Null Allowed,Duplicates allowed
+	
+			students
+Sno    |    Name   |   Phno   |  email    |  DOB   |  Gender    |  Pass
+(int)     (varchar)  (varchar) (varchar) (date)    (Enum)         (Set)
+(PK)	(U)        (NN)	(U)       (U)      (M,F,T)        (E,T,M,Sc,So)
+1	a	1234    A1@g.co  1996-01-01     F		E
+2	b	1234    b2@g.co  1665-01-02    M		E,T,M
+3 	c	2341     null         1886-03-02   F		Sc,So
+4 	d	2341    d4@g.co   null	             T                      M,Sc
+--------------------------------------------------------------------------------------
+(Should not be done-case)
+4	a	null    b2@g.co   1886-03-02    Z		P,C,B
+
+-----------------------------------------------------------------------------------------
+Create table with keys:
+
+CREATE TABLE STUDENTS(SNO INT PRIMARY KEY, NAME VARCHAR(25)
+UNIQUE KEY, PHNO VARCHAR(20) NOT NULL, EMAIL VARCHAR(30)
+UNIQUE KEY, DOB DATE UNIQUE KEY, GENDER ENUM ('M','F','T'), PASS
+SET ('E','T','M','Sc','So'));
+
+DESC STUDENTS;
+
+Fields: sno,name,phno,email,doc,gender,pass
+Keys: PK,UNI,ENUM,SET
+Default: null, null,null,null ,null,null,null
+Extra: Eg: Auto increment|Counter
+null: sno - no, name- yes, phno - no, email - yes, dob - yes, gender - yes, pass- yes
+
+--------------
+
+desc student;
+
+ALTER:
+DDL Command used to restructure a table and its columns only.
+
+1. Add Columns
+2. Drop Columns
+3. Change Columns - column name, datatype
+4. Add Constraints
+5. Rename table
+
+			student
+	Sno    |    Name   |   Phno   |  email    |  DOB   |  Gender
+	(int)     (varchar)  (varchar) (varchar) (date)    (varchar)
+Syntax:
+1. Add Columns:
+
+Sno    |    Name   |   Phno   |  	age      |	email    |  DOB   |  Gender
+(int)     (varchar)     (varchar)     (int)      (varchar)   (date)    (varchar)
+
+no keyword 'before'
+alter     table     <tn>          add column <colname> <datatype> <constraint> after <existing colname>
+ALTER  TABLE   STUDENT   ADD   COLUMN  AGE   INT   AFTER   PHNO;
+
+desc student;
+
+2. Drop Columns:
+
+Sno    |    Name   |   Phno   |  	age      |	email    |  DOB   |  Gender
+(int)     (varchar)     (varchar)     (int)      (varchar)   (date)    (varchar)
+
+alter table <tn> drop column <colname>;
+
+ALTER TABLE STUDENT DROP COLUMN EMAIL;
+DESC STUDENT;
+
+Sno    |    Name   |   Phno   |  	age      |  DOB   |  Gender
+(int)     (varchar)     (varchar)     (int)      (date)    (varchar)
+
+3. CHANGE COLUMNS:
+
+i) Change Datatype:
+Sno    |    Name   |   Phno   |  	age      |  DOB   |  Gender
+(int)     (varchar)     (varchar)     (int)      (date)    (varchar)
+
+alter table <tn> change column <oldcolname> <newcolname> <newdtype> <newConstraint>;
+ALTER TABLE STUDENT CHANGE COLUMN Gender Gender Enum('M','F','T');
+desc student;
+
+ii) Change Column name:
+Sno    |    Name   |   Phno   |  	age      |  DOB   |  Gender
+(int)     (varchar)     (varchar)     (int)      (date)    (Enum)
+				           (M,F,T)
+
+ALTER TABLE STUDENT CHANGE COLUMN PHNO MOBILE INT;
+
+Sno    |    Name   |   Mobile |  	age      |  DOB   |  Gender
+(int)     (varchar)     (int)              (int)      (date)    (Enum)
+				           (M,F,T)
+
+4. ADD CONSTRAINTS:
+Sno    |    Name   |   Mobile |  	age      |  DOB   |  Gender
+(int)     (varchar)     (int)              (int)      (date)    (Enum)
+				           (M,F,T)
+
+alter table <tn> add constraint <constraintname>(<colname>);
+ALTER TABLE STUDENT ADD CONSTRAINT UNIQUE(NAME);
+
+Sno    |    Name   |   Mobile |  	age      |  DOB   |  Gender
+(int)     (varchar)     (int)              (int)      (date)    (Enum)
+				           (M,F,T)
+             (unique)
+
+5. RENAME TABLE:
+
+Change the table name from Student to CollegeDetails:
+alter table <tn> rename to <newtablename>;
+ALTER TABLE STUDENT RENAME TO COLLEGEDETAILS;
+desc collegedetails;
+desc student; ---> Will not work as its rewritten.
+
+
+
+
+
+
+
+
+
+
+
+
+

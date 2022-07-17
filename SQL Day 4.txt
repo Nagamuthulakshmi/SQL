@@ -1,0 +1,158 @@
+Foreign Key
+DML - Insert,Update,Delete.
+
+28-06-22
+DDL - Used to add, remove and change column data.
+DML - Used to add, remove and change row data.
+
+Insert :
+1. Insert one row with all column -  3 ways
+2. Insert many rows with all columns - 3 ways
+3. Insert one row with some columns - 2 ways
+4. Insert many rows with some columns- 2 ways
+
+Take table with conditions:
+1. Link to the db 
+show databases; (lists the databases available in xampp)
+2. use <dbname>;
+show tables; (lists the tables in that database.)
+3. desc students;
+
+			students
+Sno    |    Name   |   Phno   |  email    |  DOB   |  Gender    |  Pass
+(int)     (varchar)  (varchar) (varchar) (date)    (Enum)         (Set)
+(PK)	(U)        (NN)	(U)       (U)      (M,F,T)        (E,T,M,Sc,So)
+1	a	1234    A1@g.co  1996-01-01     F		E
+2	b	1234    b2@g.co  1665-01-02    M		E,T,M
+3 	c	2341     null         1886-03-02   F		Sc,So
+4 	d	2341    d4@g.co   null	             T                      M,Sc
+--------------------------------------------------------------------------------------
+(Should not be done-case)
+4	a	null    b2@g.co   1886-03-02    Z		P,C,B
+
+-----------------------------------------------------------------------------------------
+1.INSERT ONE ROW WITH ALL COLUMNS:
+
+insert into students(sno,name,phno,email,dob,gender,pass) values(1, 'a' , '1234', 
+'a1@g.co', '1991-01-01', 'F' , 'E');
+
+OR
+
+insert into students values(1, 'a' , '1234', 'a1@g.co', '1991-01-01', 'F' , 'E');
+(should give all row data in same column order)
+
+OR
+
+insert into students(phno,email,dob,gender,pass,sno,name) values( '1234', 
+'a1@g.co', '1991-01-01', 'F' , 'E',1, 'a');
+
+---->select * from students;   (DQL)
+---------------------------------------------------------------------------
+2.INSERT MANY ROW WITH ALL COLUMNS:
+
+insert into students(sno,name,phno,email,dob,gender,pass) values
+(2, 'b' , '2365', 'b2@g.co', '1992-01-01', 'M' , 'T'),
+(3, 'c' , '3498', 'c3@g.co', '1992-01-01', 'T' , 'Sc');
+
+OR
+
+insert into students values(2, 'b' , '2365', 'b2@g.co', '1992-01-01', 'M' , 'T'),
+(3, 'c' , '3498', 'c3@g.co', '1992-01-01', 'T' , 'Sc');
+(should give all row data in same column order)
+
+OR
+
+insert into students(phno,email,dob,gender,pass,sno,name) values
+( '2365', 'b2@g.co', '1992-01-01', 'M' , 'T',2, 'b'),
+( '3498', 'c3@g.co', '1992-01-01', 'T' , 'Sc',3, 'c' );
+
+---->select * from students;   (DQL)
+------------------------------------------------------------------------------------
+3.INSERT ONE ROW WITH SOME COLUMNS:
+
+insert into students(sno,phno,pass) values(4, '1364', 'E');
+
+OR
+
+insert into students(phno,pass,sno) values('1364', 'E',4);
+
+---->select * from students;   (DQL)
+-----------------------------------------------------------------------------------
+4.INSERT MANY ROW WITH SOME COLUMNS:
+
+insert into students(sno,name, phno) values(5,'e', '1364'),(6,'f', '1564');
+
+OR
+
+insert into students(phno,name,sno) values('1364','e', 5),( '1564','f',6);
+
+---->select * from students;   (DQL)
+---------------------------------------------------------------------------------
+AGAINST CONDITIONS:
+
+1. PRIMARY CONSTRAINT:
+insert into students values(2, 'g' , '1534', 'g2@g.co', '1891-01-01', 'F' , 'M');
+---> Duplicate sno-2 (PK constraint) 
+insert into students values(NULL, 'g' , '1534', 'g2@g.co', '1891-01-01', 'F' , 'M');
+---> Cant insert null value-NULL (PK constraint)
+
+2. NOT NULL:
+insert into students values(7, 'g' , NULL, 'g7@g.co', '1881-01-01', 'T' , 'Sc');
+---> Cant insert null value-NULL (not null constraint)
+
+3. UNIQUE:
+insert into students values(8, 'a' , '3627', 'a8@g.co', '1681-01-01', 'F' , 'So');
+---->Duplicate Name cant be inserted-a (Unique Constraint)
+
+----------
+Doubt:
+SEt insertion
+not null constraint adding.
+--------------------------------------------------------------------------------------
+UPDATE:
+1. Updating All Values:
+update <tn> set <column name> = <value>;
+update students set phno='5678';
+-->all the phno for all people will be changed as 5678.
+update students set gender = 'M';
+---> all people in table will become male.
+
+2. Updates only one Value:
+update <tn> set <column name> = <value> where <colname> -= <vallue>;
+update students set name='meenu' where sno = 2;
+--> Changes name of 2nd member as meenu.
+update students set sno=22 where sno = 2;
+-->Changes sno as 22 for meber who has sno as 2.
+update students set email = 'g10@g.co' where name = 'g';
+--> Changes email id for member whose name is g.
+
+
+3. Updates many values:
+update students set pass = 'So' where sno>=4;
+----> sets pass value as So for sno 5,6,7 and above.
+update students set phno='5777' where sno between 2 and 7;
+-->Changes phno as 5777 for members 2,3,4,5,6,7
+-------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

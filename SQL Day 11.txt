@@ -1,0 +1,45 @@
+CRUD - WEB APPLICATION/MOBILE APPLICATION
+
+CREATE  -  DDL,INSERT
+RETRIEVE - DQL
+UPDATE - DML - UPDATE
+DELETE - DML - DELETE
+
+JOINS
+TRIGGERS
+CURSORS
+GRANT 
+REVOKE
+VIEWS
+virtual table created on top of a real table.
+stores the result answer as a fake table so there is no need for us to execute 
+the complex query again and again.
+syntax:
+create or replace view viewname as (my real query);
+
+create or replace view custordr_view as (select c.cust_id, o.cust_id from 
+customer c, orders o where c.cust_id=o.cust_id);
+
+select * from custordr_view; (equi join of custormer and orders table)
+
+select name from custordr_view where prodname='iphone';
+
+Guidelines:
+1. We cannot insert , update or delete a view data.
+2. if we want view data to be updated we need to do changes to the main table.
+3. changes done in the view area of the main table will affect the view.
+changes done to the non view area of the main table will not affect the view.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
